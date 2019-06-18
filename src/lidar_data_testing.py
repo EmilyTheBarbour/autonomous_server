@@ -18,8 +18,6 @@ gain = 3.0
 def callback(data):
     data_np = ros_numpy.numpify(data)
 
-    f = open("output.txt", 'w')
-
     coords = np.zeros((2, data_np.shape[0]))
     coords[0] = data_np['x']
     coords[1] = data_np['y']
@@ -28,11 +26,7 @@ def callback(data):
 
 
     coords = np.floor(np.multiply(np.divide(np.add(coords, 100), 200), img_size - 1)).astype(int)
-
     img_np = np.zeros((img_size, img_size, 3), dtype=np.uint8) 
-
-    rospy.loginfo(img_np[2,2])
-    rospy.loginfo(np.full((3), 5))
 
     for i in range(data_np.shape[0]):
         img_np[coords[0][i], coords[1][i]] += (z[i] * gain).astype(np.uint8)

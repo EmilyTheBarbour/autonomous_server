@@ -1,8 +1,12 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>autonomous_server</name>
-  <version>0.0.0</version>
-  <description>The autonomous_server package</description>
+  <version>0.1.0</version>
+  <description>
+    ROS Server package intended to be used for the backbone of any 
+    autonomous vehicle, though its current application is with the 
+    opensource CARLA simulator at http://carla.org/ 
+  </description>
 
  
   <maintainer email="emilybarbour@todo.todo">emilybarbour</maintainer>
