@@ -25,8 +25,16 @@
     </include>
 
     <!--    BOOT ACKERMAN CONTROLLER    -->
-    <include file="$(find carla_ackermann_control)/launch/carla_ackermann_control.launch" />
+    <include file="$(find carla_ackermann_control)/launch/carla_ackermann_control.launch" >
+        <arg name="role_name" value="$(arg role_name)"/>
+    </include>
   
+    <!--    BOOT WAYPOINT CALCULATOR    -->
+    <include file="$(find carla_waypoint_publisher)/launch/carla_waypoint_publisher.launch"> 
+        <arg name='host' value='$(arg host)'/>
+        <arg name='port' value='$(arg port)'/>
+        <arg name="role_name" value="$(arg role_name)"/>
+    </include>
     <!--    BOOT RVIZ DISPLAY   -->
     <node type="rviz" name="rviz" pkg="rviz" args="-d $(arg rviz_config)" />
 
@@ -38,5 +46,8 @@
 
     <!--    BOOT LIDAR PROCESSING NODE  -->
     <node name="lidar_data_testing" type="lidar_data_testing.py" pkg="autonomous_server"/>
+
+    <!--    BOOT GNSS POSE COMPARISON NODE  -->
+    <node name="gnss_vs_pose" type="gnss_vs_pose.py" pkg="autonomous_server"/>
 
 </launch>

@@ -79,8 +79,6 @@ def main():
                 rospy.sleep(1)
                 vehicle_cmd.publish(AckermannDrive(steering_angle=1, steering_angle_velocity=0, speed=-20, acceleration=0, jerk=0))
                 rospy.sleep(1)
-                vehicle_cmd.publish(AckermannDrive(steering_angle=1, steering_angle_velocity=0, speed=-20, acceleration=0, jerk=0))
-                rospy.sleep(1)
                 
 
                 vehicle_cmd.publish(stopMessage)
