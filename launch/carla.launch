@@ -39,15 +39,18 @@
     <node type="rviz" name="rviz" pkg="rviz" args="-d $(arg rviz_config)" />
 
     <!--    BOOT VEHICLE COMMAND NODE   -->
-    <node name="vehicle_control" type="vehicle_control.py" pkg="autonomous_server"/>
+    <node name="vehicle_control" type="vehicle_control.py" pkg="autonomous_server" output="screen"/>
 
     <!--    BOOT LIDAR FILTERING NODE   -->
-    <node name="lidar_test" type="lidar_test" pkg="autonomous_server"/>
+    <node name="lidar_filtering" type="lidar_filtering" pkg="autonomous_server"/>
 
     <!--    BOOT LIDAR PROCESSING NODE  -->
-    <node name="lidar_data_testing" type="lidar_data_testing.py" pkg="autonomous_server"/>
+    <node name="lidar_object_avoidance" type="lidar_object_avoidance.py" pkg="autonomous_server"/>
 
     <!--    BOOT GNSS POSE COMPARISON NODE  -->
     <node name="gnss_vs_pose" type="gnss_vs_pose.py" pkg="autonomous_server"/>
+
+    <!--    BOOT WAYPOINT CONVERSION NODE  -->
+    <!--node name="coordinate_translation" type="coordinate_translation.py" pkg="autonomous_server" output="screen"/-->
 
 </launch>

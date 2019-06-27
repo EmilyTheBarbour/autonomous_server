@@ -17,5 +17,5 @@ catkin_package(
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(lidar_test src/lidar_test.cpp)
-target_link_libraries(lidar_test ${catkin_LIBRARIES})
+add_executable(lidar_filtering src/lidar_filtering.cpp)
+target_link_libraries(lidar_filtering ${catkin_LIBRARIES})

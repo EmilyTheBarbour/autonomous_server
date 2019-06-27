@@ -1,19 +1,21 @@
 #!/usr/bin/env python
 
 import rospy
-import cv2
 import numpy as np
 import ros_numpy
 from sensor_msgs.msg import PointCloud2, PointField, Image
 import math
 from PIL import Image as pil_img
 
-pubFull = rospy.Publisher('top_down_view', Image, queue_size=3)
 pubMask = rospy.Publisher('top_down_view_mask', Image, queue_size=3)
+
+### HYPER PARAMETERS 
+
 img_size = 301
 mask_size = 50
 gain = 3.0
 
+###
 
 def callback(data):
     data_np = ros_numpy.numpify(data)
@@ -23,7 +25,6 @@ def callback(data):
     coords[1] = data_np['y']
 
     z = data_np['z']
-
 
     coords = np.floor(np.multiply(np.divide(np.add(coords, 100), 200), img_size - 1)).astype(int)
     img_np = np.zeros((img_size, img_size, 3), dtype=np.uint8) 
@@ -40,7 +41,6 @@ def callback(data):
     img_mask[24, 25] = (0, 255, 0)     
     img_mask[23, 25] = (0, 255, 0) 
     
-    pubFull.publish(ros_numpy.msgify(Image, img_np, encoding='rgb8'))
     pubMask.publish(ros_numpy.msgify(Image, img_mask, encoding='rgb8'))
 
 
